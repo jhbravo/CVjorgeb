@@ -1,0 +1,390 @@
+body {
+  font-family: 'Cuprum';
+  top: 0 !important;
+  background: rgb(204, 204, 204);
+}
+
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+page {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 5.0mm;
+  margin-bottom: 5.0mm;
+  background: white;
+}
+
+page[size='Letter'] {
+  width: 215.9mm;
+  height: 279.4mm;
+}
+
+@media print {
+  body, div, page {
+    margin: 0;
+    margin-bottom: 0;
+  }
+  @page {
+    width: 215.9mm;
+    height: 279.4mm;
+    margin: 0;
+  }
+}
+
+/** Boton PAra Imprimir **/
+
+#fixedbutton {
+  position: fixed;
+  z-index: 50;
+  top: 10%;
+  left: 20%;
+}
+
+#google_translate_element {
+  position: fixed;
+  z-index: 50;
+  top: 5%;
+  left: 20%;
+}
+
+.divleft {
+  position: absolute;
+  top: 8mm;
+  left: 8mm;
+  float: left;
+  width: 200px;
+  height: 890px;
+  border: 1px solid #ccc;
+  background-color: #f7f7f7;
+}
+
+.divright {
+  position: absolute;
+  top: 8mm;
+  right: 8mm;
+  float: right;
+  width: 538px;
+  height: 890px;
+  padding: 0 10px;
+  text-align: justify;
+  border: 0 solid #73ad21;
+}
+
+.divfull {
+  position: absolute;
+  top: 8mm;
+  right: 8mm;
+  left: 8mm;
+  float: left;
+  border: 0 solid #73ad21;
+}
+
+.divfullc {
+  float: left;
+  margin-bottom: 0;
+  padding: 0 0;
+  border: 0 solid #73ad21;
+}
+
+/** Referencias **/
+
+.divrefl {
+  font-size: 12px;
+  position: absolute;
+  bottom: 8mm;
+  left: 8mm;
+  float: left;
+  overflow: auto;
+  width: 360px;
+  height: 80px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.divrefr {
+  font-size: 12px;
+  position: absolute;
+  right: 8mm;
+  bottom: 8mm;
+  float: left;
+  overflow: auto;
+  width: 360px;
+  height: 80px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.imgref {
+  float: left;
+  width: 50px;
+  height: 50px;
+  padding: 2px;
+}
+
+/** Foto y descripcion **/
+
+.card {
+  width: 100%;
+  transition: .3s;
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+/** Habilidades **/
+
+.chip {
+  font-size: 16px;
+  line-height: 50px;
+  display: inline-block;
+  overflow: hidden;
+  width: 109px;
+  height: 50px;
+  margin: 4px;
+  padding: 0 25px;
+  padding-right: 5px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: #f7f7f7;
+}
+
+.chip img {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin: 0 10px 0 -25px;
+}
+
+/** Educacion  **/
+
+.containeruni {
+  margin: 10px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
+
+.containeruni::after {
+  display: table;
+  clear: both;
+  content: '';
+}
+
+.containeruni img {
+  float: left;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+/** Botones Extras  **/
+
+#optionsnav a {
+  font-size: 20px;
+  position: fixed;
+  left: -80px;
+  width: 100px;
+  padding: 15px;
+  transition: .3s;
+  text-decoration: none;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+#optionsnav a:hover {
+  left: 0;
+}
+
+#about {
+  top: 20px;
+  text-align: right;
+  background-color: #4caf50;
+}
+
+#blog {
+  top: 80px;
+  text-align: right;
+  background-color: #2196f3;
+}
+
+#print {
+  top: 140px;
+  text-align: right;
+  background-color: #f44336;
+}
+
+#contact {
+  top: 200px;
+  text-align: right;
+  background-color: #555;
+}
+
+/** Botones Extras  **/
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  padding-left: 1.3em;
+  list-style-position: outside;
+}
+
+li.b01:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f044';
+  text-align: center;
+}
+
+li.b02:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f00c';
+  text-align: center;
+}
+
+li.b03:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f046';
+  text-align: center;
+}
+
+li.b04:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f14a';
+  text-align: center;
+}
+
+li.b05:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f073';
+  text-align: center;
+}
+
+li.b06:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f19c';
+  text-align: center;
+}
+
+li.b07:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f02d';
+  text-align: center;
+}
+
+li.b08:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f041';
+  text-align: center;
+}
+
+li.b09:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f02e';
+  text-align: center;
+}
+
+li.b10:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f1c4';
+  text-align: center;
+}
+
+li.b11:before {
+  font-family: FontAwesome;
+  display: inline-block;
+  width: 1.3em;
+  margin-left: -1.3em;
+  content: '\f2be';
+  text-align: center;
+}
+
+/* Para lo ultimo */
+
+.divend {
+  position: relative;
+  margin-bottom: 5px;
+  padding: 1px 5px;
+}
+
+.divabs {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 200px;
+  height: 53px;
+  margin: 0;
+  border: 0 solid #73ad21;
+}
+
+.divabs img {
+  float: left;
+  width: auto;
+  max-width: 50px;
+  height: auto;
+}
+
+.divabs img.right {
+  display: inline-block;
+  float: right;
+  margin-right: 3px;
+}
+
+.danger {
+  border-left: 6px solid #f44336;
+  background-color: #fdd;
+}
+
+.success {
+  border-left: 6px solid #4caf50;
+  background-color: #dfd;
+}
+
+.info {
+  border-left: 6px solid #2196f3;
+  background-color: #e7f3fe;
+}
+
+.warning {
+  border-left: 6px solid #ffeb3b;
+  background-color: #ffc;
+}
+
+/* http://fontawesome.io/icons/ */
+
+/* http://fontawesome.io/cheatsheet/ */
