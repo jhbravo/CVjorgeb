@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Jorge Bravo | CV</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css">
+  <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial;
+      padding: 20px;
+      background: #f1f1f1;
+    }
+
+    /* Header/Blog Title */
+
+    .header {
+      padding: 30px;
+      font-size: 40px;
+      text-align: center;
+      background: white;
+    }
+
+    /* Style the top navigation bar */
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    /* Style the topnav links */
+
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    /* Change color on hover */
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    /* Create two unequal columns that floats next to each other */
+
+    /* Left column */
+
+    .leftcolumn {
+      float: left;
+      width: 25%;
+    }
+
+    /* Right column */
+
+    .rightcolumn {
+      float: right;
+      width: 75%;
+      background-color: #f1f1f1;
+      padding-left: 20px;
+    }
+
+    /* Fake image */
+
+    .fakeimg {
+      background-color: #aaa;
+      width: 100%;
+      padding: 20px;
+    }
+
+    /* Add a card effect for articles */
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    /* Clear floats after the columns */
+
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 20px;
+      text-align: center;
+      background: #ddd;
+      margin-top: 20px;
+    }
+
+    /* Expericnia y Habilidades */
+
+    .fullwidth {
+      padding: 20px;
+      background: white;
+      margin-top: 20px;
+    }
+
+    /* Para la imagen principal del CV */
+
+    .cardim {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      margin: auto;
+      text-align: center;
+      font-family: arial;
+      margin-top: 20px;
+      background: white;
+    }
+
+    .title {
+      color: grey;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      outline: 0;
+      display: inline-block;
+      padding: 8px;
+      color: white;
+      background-color: #000;
+      text-align: center;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 22px;
+      color: black;
+    }
+
+    button:hover,
+    a:hover {
+      opacity: 0.7;
+    }
+
+    /* Para la imagen de la Universidad */
+
+    .carduni {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      float: left;
+      width: 31.0%;
+      margin: 10px;
+      text-align: center;
+      /*  */
+    }
+
+    .carduni:hover {
+      box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .container {
+      padding: 2px 16px;
+    }
+
+    .rowuni:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+
+    /* Para Experiencia Laboral */
+
+    /* Style the tab */
+
+    .tab {
+      float: left;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+      width: 30%;
+      height: 400px;
+    }
+
+    /* Style the buttons inside the tab */
+
+    .tab button {
+      display: block;
+      background-color: inherit;
+      color: black;
+      padding: 22px 16px;
+      width: 100%;
+      border: none;
+      outline: none;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 17px;
+    }
+
+    /* Change background color of buttons on hover */
+
+    .tab button:hover {
+      background-color: #ddd;
+    }
+
+    /* Create an active/current "tab button" class */
+
+    .tab button.active {
+      background-color: #ccc;
+    }
+
+    /* Style the tab content */
+
+    .tabcontent {
+      float: left;
+      padding: 0px 12px;
+      border: 1px solid #ccc;
+      width: 70%;
+      border-left: none;
+      height: 400px;
+    }
+
+    /* Intereses */
+
+    .rowint {
+      margin: 10px -16px;
+    }
+
+    /* Add padding BETWEEN each column */
+
+    .rowint,
+    .rowint>.columnint {
+      padding: 8px;
+    }
+
+    /* Create three equal columns that floats next to each other */
+
+    .columnint {
+      float: left;
+      width: 20%;
+      display: none;
+      /* Hide all elements by default */
+    }
+
+    /* Clear floats after rows */
+
+    .rowint:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    /* Content */
+
+    .content {
+      background-color: white;
+      padding: 10px;
+    }
+
+    /* The "show" class is added to the filtered elements */
+
+    .show {
+      display: block;
+    }
+
+    /* Style the buttons */
+
+    .btnint {
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background-color: white;
+      cursor: pointer;
+      background-color: rgb(82, 173, 235);
+    }
+
+    .btnint:hover,
+    .active {
+      background-color: #666;
+      color: white;
+    }
+
+    #map {
+      width: 100%;
+      height: 350px;
+      min-height: 100%;
+      min-width: 100%;
+      display: block;
+    }
+
+    /* Experiencias y habilidades */
+
+    .filterDivex {
+      float: left;
+      color: #ffffff;
+      text-align: center;
+      margin: 2px;
+      display: none;
+
+      padding: 0 25px;
+      height: 50px;
+      font-size: 16px;
+      line-height: 50px;
+      border-radius: 25px;
+      background-color: #9f9f9f;
+    }
+
+    .filterDivex img {
+      float: left;
+      margin: 0 10px 0 -25px;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+
+    .show {
+      display: block;
+    }
+
+    .containerex {
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    /* Style the buttons */
+
+    .btnexp {
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      background-color: #f1f1f1;
+      cursor: pointer;
+    }
+
+    .btnexp:hover,
+    .active {
+      background-color: #ccc;
+    }
+
+
+    /* Barras de habilidades */
+
+    /* Three column layout */
+
+    .side {
+      float: left;
+      width: 15%;
+      margin-top: 10px;
+
+    }
+
+    .middle {
+      margin-top: 10px;
+      float: left;
+      width: 70%;
+      z-index: -1;
+    }
+
+    /* Place text to the right */
+
+    .right {
+      float: left;
+    }
+
+    /* The bar container */
+
+    .bar-container {
+      width: 100%;
+      background-color: #f1f1f1;
+      text-align: center;
+      color: white;
+    }
+
+    /* Individual bars */
+
+    .bar-5 {
+      width: 60%;
+      height: 18px;
+      background-color: #4CAF50;
+    }
+
+    .bar-4 {
+      width: 30%;
+      height: 18px;
+      background-color: #2196F3;
+    }
+
+    .bar-3 {
+      width: 10%;
+      height: 18px;
+      background-color: #00bcd4;
+    }
+
+    .bar-2 {
+      width: 4%;
+      height: 18px;
+      background-color: #ff9800;
+    }
+
+    .bar-1 {
+      width: 15%;
+      height: 18px;
+      background-color: #f44336;
+    }
+
+    /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+
+    @media (max-width: 800px) {
+      .leftcolumn,
+      .rightcolumn {
+        width: 100%;
+        padding: 0;
+      }
+    }
+  </style>
+
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'es',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+  </script>
+
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+  </script>
+
+</head>
+
+<body>
+
+  <div class="header">
+    <h2>CURRÍCULUM VÍTAE<br>Jorge Humberto Bravo Méndez</h2>
+
+  </div>
+
+  <div class="topnav">
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#">Link</a>
+    <a href="#" style="float:right">Link</a>
+  </div>
+
+
+  <div class="row">
+
+    <div class="leftcolumn">
+      <div class="cardim">
+        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="John" style="width:100%">
+        <h1>Jorge Humberto Bravo Méndez</h1>
+        <p class="title">Maestro en Ciencias<br>Hidrometeorología</p>
+        <p>Universidad de Guadalajara</p>
+        <div style="margin: 24px 0;">
+          <a href="#"><i class="fa fa-dribbble"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+        <p><button>Contact</button></p>
+      </div>
+
+      <div class="card">
+        <h3>Idioma</h3>
+        <div id="google_translate_element"></div>
+      </div>
+
+      <div class="card">
+        <div id="map"></div>
+      </div>
+
+      <div class="card">
+        <h3>Habilidades</h3>
+        <div class="row">
+          <div class="side">
+            <div>5 star</div>
+          </div>
+          <div class="middle"> Programación
+            <div class="bar-container">
+              <div class="bar-5"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div>150%</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="side">
+            <div>4 star</div>
+          </div>
+          <div class="middle"> Programación
+            <div class="bar-container">
+              <div class="bar-4"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div> 63%</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="side">
+            <div>3 star</div>
+          </div>
+          <div class="middle"> Programación
+            <div class="bar-container">
+              <div class="bar-3"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div> 15%</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="side">
+            <div>2 star</div>
+          </div>
+          <div class="middle"> Programación
+            <div class="bar-container">
+              <div class="bar-2"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div> 6%</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="side">
+            <div>1 star</div>
+          </div>
+          <div class="middle"> Programación
+            <div class="bar-container">
+              <div class="bar-1"></div>
+            </div>
+          </div>
+          <div class="side right">
+            <div> 20%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rightcolumn">
+      <!-- EDUCACIÓN -->
+      <div class="card">
+        <h2> <i class="fa fa-graduation-cap fa-fw"></i> Educación</h2>
+        <h3>Como egresado de la maestría en hidrometeorología de la UdeG busco promover la difusión y la divulgación en el área de las ciencias atmosféricas y oceanográficas, para cubrir el vació que existe en el país en esta importante área de las ciencias de la Tierra</h3>
+        <div class="rowuni">
+          <div class="carduni">
+            <img src="imgs/logos/logoUDG.png" alt="udg" style="width:100%">
+            <div class="container">
+              <h4><b>Universidad de Guadalajara</b></h4>
+              <p>Maestría en Ciencias en Hidrometeorología</p>
+              <p> <i class="fa fa-calendar"></i> 2010 – 2012</p>
+              <p> <i class="fa fa-book"></i> Tesis: Marea de tormenta en las costas de Jalisco: Ocurrencia y Zonas de riesgo</p>
+              <p>Titulado</p>
+            </div>
+          </div>
+          <div class="carduni">
+            <img src="imgs/logos/logoUV.jpg" alt="UV" style="width:100%">
+            <div class="container">
+              <h4><b>Universidad Veracruzana</b></h4>
+              <p>Licenciatura en Ciencias Atmosfericas</p>
+              <p> <i class="fa fa-calendar"></i> 2004 – 2009</p>
+              <p> <i class="fa fa-book"></i> Tesis: Efecto de marea de tormenta, inducida por ciclones tropicales, en el litoral veracruzano</p>
+              <p>Titulado</p>
+            </div>
+          </div>
+
+        </div>
+
+        <p>Some text..</p>
+        <p>. </p>
+      </div>
+      <!-- End EDUCACIÓN -->
+      <!-- Experiencia laboral -->
+      <div class="card">
+        <h2> <i class="fa fa-suitcase fa-fw"></i> Experiencia Laboral</h2>
+        <h3>Durante mi desempeño en el campo laboral he obtenido la habilidad para trabajar de forma independiente, así como parte de diversoss equipos empleando una excelente comunicación, manteniendo buenas relaciones laborales con mis compañeros de trabajo siempre basadas en respeto mutuo</h3>
+        <div class="rowuni">
+          <div class="tab">
+            <button class="tablinks" onclick="openCity(event, 'SPCVer')" id="defaultOpen">Investigador de Clima</button>
+            <button class="tablinks" onclick="openCity(event, 'Geok')">Meteorólogo</button>
+            <button class="tablinks" onclick="openCity(event, 'Otro')">Tokyo</button>
+          </div>
+
+          <div id="SPCVer" class="tabcontent">
+            <h3>SECRETARIA DE PROTECCIÓN CIVIL	Xalapa, Ver, Mex.</h3>
+            <p>2014 – presente</p>
+            <p>Laborando en el Centro de Estudios y Pronósticos Meteorológicos, llevando acabo las siguiente funciones:</p>
+            <p>Implementado el modelo de pronóstico WRF en forma operativa</p>
+            <p>Evaluación de resultados del modelo WRF</p>
+            <p>Proyecto interno: perdida de playas en Costa Esmeralda</p>
+            <p>Proyecto interno: Estimación de perdida de playas en el estado de Veracruz</p>
+            <p>Boletines climatológicos</p>
+            <p>Reporte sobre medio ambiente y cambio climático</p>
+            <p>Apoyo en estadística y visualización de datos climatológicos</p>
+          </div>
+
+          <div id="Geok" class="tabcontent">
+            <h3>GEOKINETICS DE MÉXICO	Frontera-Centla, Tab, Mex.</h3>
+            <p>2012 – 2013</p>
+            <p>Contratado por Advanced Network Solutions para Geokinetics de México S.A de C.V. (Proyecto de Exploración Sísmica Tsimin Tojual 3DTZ - Crew 680) llevando a cabo las siguiente funciones:</p>
+            <p>Pronóstico y diagnóstico meteorológico en la Sonda de Campeche, emitiendo la información a través de reportes convencionales y radiodifusión a embarcaciones auxiliares utilizando canales de comunicación exclusivos para el proyecto, además
+              del canal 16 marino (VHF) como medio alterno</p>
+            <p>Elaboración de reportes durante la temporada ciclónica y de lluvias</p>
+            <p>Elaboración de reportes durante la temporada invernal y frentes fríos</p>
+            <p>Apoyo en estadística de datos y sistemas meteorológicos</p>
+            <p>Administración de recursos</p>
+          </div>
+
+          <div id="Otro" class="tabcontent">
+            <h3>Tokyo</h3>
+            <p>Tokyo is the capital of Japan.</p>
+          </div>
+        </div>
+        <p>Some text..</p>
+        <p>.</p>
+      </div>
+      <!-- End Experiencia laboral -->
+
+      <!-- -->
+      <!--
+      <div class="card">
+        <h2>TITLE HEADING</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class="fakeimg" style="height:200px;">Image</div>
+        <p>Some text..</p>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      </div>
+-->
+    </div>
+
+  </div>
+
+
+  <!-- Experiencia y habilidades -->
+  <div class="fullwidth">
+    <h2>Experiencia y habilidades</h2>
+    <h3>La experiencia adquirida tanto en mi formación académica como laborar, así como mi interés por el aprendizaje autodidacta, además de ayudarme en adquirir experiencia en le campo de las Ciencias Atmosféricas, me ha fortalecido con valiosas habilidades en áreas como Percepción Remota, GIS's y Programación</h3>
+    <div id="myBtnContainer">
+      <button class="btnint active" onclick="filterSelection('all')"> Todo</button>
+      <button class="btnint" onclick="filterSelection('mete')"> Meteorologia</button>
+      <button class="btnint" onclick="filterSelection('prem')"> Percepción Remota</button>
+      <button class="btnint" onclick="filterSelection('sigs')"> SIG's</button>
+      <button class="btnint" onclick="filterSelection('comp')"> Computación</button>
+      <button class="btnint" onclick="filterSelection('habi')"> Habilidades</button>
+    </div>
+
+    <!-- Portfolio Gallery Grid -->
+    <div class="rowint">
+      <div class="columnint mete">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/mountains.jpg" alt="Mountains" style="width:100%">
+          <h4>Mountains</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint mete">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/lights.jpg" alt="Lights" style="width:100%">
+          <h4>Lights</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint mete">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/nature.jpg" alt="Nature" style="width:100%">
+          <h4>Forest</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint prem">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/cars1.jpg" alt="Car" style="width:100%">
+          <h4>Retro</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint prem">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/cars2.jpg" alt="Car" style="width:100%">
+          <h4>Fast</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint prem">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/cars3.jpg" alt="Car" style="width:100%">
+          <h4>Classic</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint sigs">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/people1.jpg" alt="Car" style="width:100%">
+          <h4>Girl</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint sigs">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/people2.jpg" alt="Car" style="width:100%">
+          <h4>Man</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <div class="columnint sigs">
+        <div class="content">
+          <img src="https://www.w3schools.com/w3images/people3.jpg" alt="Car" style="width:100%">
+          <h4>Woman</h4>
+          <p>Lorem ipsum dolor..</p>
+        </div>
+      </div>
+      <!-- END GRID -->
+    </div>
+    <!-- END MAIN -->
+    <p>Some text..</p>
+    <p>.</p>
+  </div>
+  <!--END Experiencia y habilidades -->
+
+  <div class="fullwidth">
+    <h2>Competencias y habilidades técnicas</h2>
+    <div id="myBtnContainerex">
+      <button class="btnexp active" onclick="filterSelection1('all1')"> Todo</button>
+      <button class="btnexp" onclick="filterSelection1('soss')"> SO's</button>
+      <button class="btnexp" onclick="filterSelection1('prog')"> Programación</button>
+      <button class="btnexp" onclick="filterSelection1('soft')"> Software</button>
+      <button class="btnexp" onclick="filterSelection1('webg')"> Web</button>
+      <button class="btnexp" onclick="filterSelection1('ofic')"> Ofimatico</button>
+      <button class="btnexp" onclick="filterSelection1('edit')"> Editores</button>
+      <button class="btnexp" onclick="filterSelection1('opsr')"> OpenSource</button>
+      <button class="btnexp" onclick="filterSelection1('otro')"> Otros</button>
+    </div>
+
+    <div class="containerex">
+      <div class="filterDivex soss"><img src="imgs/logo_comp/linux.png" alt="Person" width="96" height="96">Linux</div>
+      <div class="filterDivex soss"><img src="imgs/logo_comp/debian_128.png" alt="Person" width="96" height="96">Debian</div>
+      <div class="filterDivex prog"><img src="imgs/logo_comp/python.png" alt="Person" width="96" height="96">Python</div>
+      <div class="filterDivex prog soft"><img src="imgs/logo_comp/QGIS_128.png" alt="Person" width="96" height="96">QGIS</div>
+      <div class="filterDivex webg"><img src="imgs/logo_comp/html5_128.png" alt="Person" width="96" height="96">html5</div>
+      <div class="filterDivex edit"><img src="imgs/logo_comp/atom_128.png" alt="Person" width="96" height="96">Atom</div>
+      <div class="filterDivex soss"><img src="imgs/logo_comp/fedora_128.png" alt="Person" width="96" height="96">Fedora</div>
+      <div class="filterDivex webg"><img src="imgs/logo_comp/css_logo_1281.png" alt="Person" width="96" height="96">CSS</div>
+      <div class="filterDivex prog soft"><img src="imgs/logo_comp/McV_2_128.png" alt="Person" width="96" height="96">McIdas-V</div>
+      <div class="filterDivex soss"><img src="imgs/logo_comp/ubuntu.png" alt="Person" width="96" height="96">Ubuntu</div>
+      <div class="filterDivex webg prog"><img src="imgs/logo_comp/javascript_128.png" alt="Person" width="96" height="96">JavaScript</div>
+      <div class="filterDivex soft"><img src="imgs/logo_comp/idv_128.png" alt="Person" width="96" height="96">IDV</div>
+      <div class="filterDivex webg"><img src="imgs/logo_comp/bootstrap_128.png" alt="Person" width="96" height="96">Bootstrap</div>
+      <div class="filterDivex prog"><img src="imgs/logo_comp/NCL_128.jpg" alt="Person" width="96" height="96">NCL</div>
+      <div class="filterDivex soft"><img src="imgs/logo_comp/awips_ii_128.png" alt="Person" width="96" height="96">AWIPS II</div>
+      <div class="filterDivex webg"><img src="imgs/logo_comp/leaflet_128.png" alt="Person" width="96" height="96">Leaflet</div>
+      <div class="filterDivex soft"><img src="imgs/logo_comp/SNAP_128.png" alt="Person" width="96" height="96">SNAP</div>
+      <div class="filterDivex webg"><img src="imgs/logo_comp/Gmaps_128.png" alt="Person" width="96" height="96">Google Maps</div>
+      <div class="filterDivex soss"><img src="imgs/logo_comp/LMint_128.png" alt="Person" width="96" height="96">Linux Mint</div>
+      <div class="filterDivex prog"><img src="imgs/logo_comp/Ocatve_128.png" alt="Person" width="96" height="96">Ocatve</div>
+      <div class="filterDivex soss"><img src="imgs/logo_comp/CentOS_128.png" alt="Person" width="96" height="96">CentOS</div>
+      <div class="filterDivex edit"><img src="imgs/logo_comp/notepadpp_128.png" alt="Person" width="96" height="96">Notepad++</div>
+      <div class="filterDivex soss"><img src="imgs/logo_comp/windows_8.png" alt="Person" width="96" height="96">Windows</div>
+      <div class="filterDivex prog"><img src="imgs/logo_comp/matlab_128.png" alt="Person" width="96" height="96">Matlab</div>
+      <div class="filterDivex soft"><img src="imgs/logo_comp/GEarthPro_128.png" alt="Person" width="96" height="96">Google Earth</div>
+      <div class="filterDivex otro edit"><img src="imgs/logo_comp/bluegriffon_128.png" alt="Person" width="96" height="96">Bluegriffon</div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <h2>Footer</h2>
+  </div>
+</body>
+<!-- Experiencia Laboral-->
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
+<!-- Intereses-->
+<script>
+  filterSelection("all")
+
+  function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("columnint");
+    if (c == "all") c = "";
+    for (i = 0; i < x.length; i++) {
+      w3RemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+  }
+
+  function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {
+        element.className += " " + arr2[i];
+      }
+    }
+  }
+
+  function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+
+  // Add active class to the current button (highlight it)
+  var btnContainer = document.getElementById("myBtnContainer");
+  var btns = btnContainer.getElementsByClassName("btnint");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+</script>
+
+<!-- Mapa-->
+<script>
+  filterSelection1("all1")
+
+  function filterSelection1(c) {
+    var x, i;
+    x = document.getElementsByClassName("filterDivex");
+    if (c == "all1") c = "";
+    for (i = 0; i < x.length; i++) {
+      w3RemoveClass(x[i], "show");
+      if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+    }
+  }
+
+  function w3AddClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      if (arr1.indexOf(arr2[i]) == -1) {
+        element.className += " " + arr2[i];
+      }
+    }
+  }
+
+  function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    for (i = 0; i < arr2.length; i++) {
+      while (arr1.indexOf(arr2[i]) > -1) {
+        arr1.splice(arr1.indexOf(arr2[i]), 1);
+      }
+    }
+    element.className = arr1.join(" ");
+  }
+
+  // Add active class to the current button (highlight it)
+  var btnContainer = document.getElementById("myBtnContainerex");
+  var btns = btnContainer.getElementsByClassName("btnexp");
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", function() {
+      var current = document.getElementsByClassName("active");
+      current[0].className = current[0].className.replace(" active", "");
+      this.className += " active";
+    });
+  }
+</script>
+<!-- Mapa-->
+<script>
+  var uniUDG = '<b>Universidad de Guadalajara</b><br>Dpto. de Física, Módulo V CUCEI<br>Av. Revolución 1500, Col. Olímpica,<br>C.P.44440 Guadalajara, Jal, Mex.'
+  var uniUV = '<b>Universidad Veracruzana</b><br>Fac. de Instrumentación Electrónica<br>Av.Circuito Gonzalo Aguirre Beltrán s/n,<br>Zona UV C.P. 91090 Xalapa, Ver, Mex.'
+  var wrkGeo = '<b>Geokinetics de México S.A</b><br>Frontera Tabasco'
+  var wrkSPC = '<b>Secretaría de Protección Civil</b><br>Torre Corporativa Olmo, piso 6 y 7,<br>que se ubica en Distribuidor Vial No. 1009,<br>Col. Reserva Territorial, C.P. 91096 Xalapa, Ver, Mex.'
+
+
+
+
+
+
+  var planes = [
+    [uniUV, 19.516027, -96.918565],
+    [wrkSPC, 19.508609, -96.871535],
+    ["GeoK", 18.541744, -92.655682],
+    [uniUDG, 20.658312, -103.326142],
+  ];
+
+  var map = L.map('map').setView([21, -100], 4);
+  mapLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+  L.tileLayer(
+    'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; ' + mapLink + ' Contributors',
+      maxZoom: 18,
+    }).addTo(map);
+  for (var i = 0; i < planes.length; i++) {
+    marker = new L.marker([planes[i][1], planes[i][2]])
+      .bindPopup(planes[i][0])
+      .addTo(map);
+  }
+</script>
+
+</html>
